@@ -7,7 +7,6 @@ import { auth } from '../lib/firebase'
 
 function Navbar() {
     const { user, username } = useContext(UserContext);
-
     const router = useRouter();
 
     const signOut = () => {
@@ -36,7 +35,7 @@ function Navbar() {
                         </li>
                         <li>
                             <Link href={`/${username}`}>
-                                <img src={user?.photoUrl} />
+                                <img src={user?.photoURL} />
                             </Link>
                         </li>
                     </>
