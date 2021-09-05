@@ -115,6 +115,8 @@ function UsernameForm() {
                 <form onSubmit={onSubmit}>
                     <input name='username' placeholder='username' value={formValue} onChange={onChange} />
 
+                    <UsernameMessage username={formValue} isValid={isValid} loading={loading} />
+
                     <button type='submit' className='btn-green' disabled={!isValid}>Choose</button>
 
                     <h3>Debug State</h3>
@@ -129,4 +131,16 @@ function UsernameForm() {
             </section>
         )
     );
+}
+
+function UsernameMessage({ username, isValid, loading }) {
+    if (loading) {
+        return <p>Checking...</p>;
+    } else if (isValid) {
+        return <p className="text-success">{username} is available!</p>;
+    } else if (username && !isValid) {
+        return <p className="text-danger">That username is taken!</p>;
+    } else {
+        return <p></p>;
+    }
 }
