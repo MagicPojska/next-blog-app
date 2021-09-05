@@ -1,8 +1,19 @@
 import Link from "next/link";
+import { useRouter } from 'next/router';
+import { useContext } from 'react'
+import { UserContext } from '../lib/context'
+import { auth } from '../lib/firebase'
+
 
 function Navbar() {
-    const user = null;
-    const username = null;
+    const { user, username } = useContext(UserContext);
+
+    const router = useRouter();
+
+    const signOut = () => {
+        auth.signOut();
+        router.reload();
+    }
     return (
         <nav className='navbar'>
             <ul>
@@ -15,6 +26,9 @@ function Navbar() {
                 {/* user is signed-in and has username */}
                 {username && (
                     <>
+                        <li className="push-left">
+                            <button onClick={signOut}>Sign Out</button>
+                        </li>
                         <li className='push-left'>
                             <Link href='/admin'>
                                 <button className='btn-blue'>Write Posts</button>
