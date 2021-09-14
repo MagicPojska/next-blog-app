@@ -1,5 +1,7 @@
 ## Next.js + Firebase
 
+Social media project.
+
 - 👨‍🎤 Custom Firebase usernames
 - 📰 Bot-friendly content (SEO)
 - 🦾 Advanced SSR, SSG, and ISR techniques
